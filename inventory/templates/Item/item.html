@@ -1,0 +1,36 @@
+{% extends "Common/base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Items</h2>
+    <div id="msg" class="msg"></div>
+    <div class="row">
+        <div class="col"><label>Item Code</label><input id="txtCode"></div>
+        <div class="col"><label>Item Name</label><input id="txtName"></div>
+        <div class="col"><label>Category</label><input id="txtCategory"></div>
+        <div class="col"><label>Unit</label><input id="txtUnit" placeholder="PCS / BOX / REAM"></div>
+    </div>
+    <div class="row">
+        <div class="col"><label>Reorder Level</label><input id="txtReorder" type="number" step="0.001" value="0"></div>
+        <div class="col"><label>Standard Cost</label><input id="txtCost" type="number" step="0.01" value="0"></div>
+        <div class="col"></div><div class="col"></div>
+    </div>
+    <div style="margin-top:14px;">
+        <input type="hidden" id="hidId" value="0">
+        <button class="btn" id="btnSave">Save</button>
+        <button class="btn secondary" id="btnNew">New</button>
+    </div>
+</div>
+
+<div class="card">
+    <table id="tbl" class="display" style="width:100%">
+        <thead><tr>
+            <th>ID</th><th>Code</th><th>Name</th><th>Category</th><th>Unit</th>
+            <th>Reorder</th><th>Cost</th><th>Action</th>
+        </tr></thead>
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/static/Item/item.js"></script>
+{% endblock %}

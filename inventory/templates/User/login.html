@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ strTitle|default:"Sign in" }} - leoInventory</title>
+    <style>
+        body{font-family:system-ui,Arial,sans-serif;margin:0;background:#0b3d62;
+             display:flex;min-height:100vh;align-items:center;justify-content:center;color:#1f2933;}
+        .card{background:#fff;border-radius:10px;padding:28px;width:320px;
+              box-shadow:0 10px 40px rgba(0,0,0,.25);}
+        h1{font-size:18px;margin:0 0 4px;color:#0b3d62;}
+        p.sub{margin:0 0 18px;font-size:12px;color:#64748b;}
+        label{display:block;font-size:12px;color:#475569;margin:12px 0 4px;}
+        input{width:100%;box-sizing:border-box;padding:9px;border:1px solid #cbd5e1;border-radius:6px;}
+        .btn{margin-top:18px;width:100%;background:#0b6cf5;color:#fff;border:0;border-radius:6px;
+             padding:10px;cursor:pointer;font-size:14px;}
+        .err{background:#fee2e2;color:#991b1b;padding:8px 12px;border-radius:6px;
+             font-size:13px;margin-bottom:6px;}
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>leoInventory</h1>
+        <p class="sub">Sign in to continue</p>
+        {% if strError %}<div class="err">{{ strError }}</div>{% endif %}
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ strNext }}">
+            <label for="vhr_user_name">User name</label>
+            <input id="vhr_user_name" name="vhr_user_name" autofocus
+                   value="{{ strUserName|default:'' }}" autocomplete="username">
+            <label for="vhr_password">Password</label>
+            <input id="vhr_password" name="vhr_password" type="password"
+                   autocomplete="current-password">
+            <button class="btn" type="submit">Sign in</button>
+        </form>
+    </div>
+</body>
+</html>

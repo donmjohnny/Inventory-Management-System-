@@ -1,0 +1,16 @@
+{% extends "Common/base.html" %}
+{% block content %}
+<div class="card">
+    <h2>leoInventory &mdash; General Inventory Management System</h2>
+    <p>Welcome, <b>{{ dctSessionUser.vhr_user_name }}</b>.</p>
+    <p>This is a scaffold. Two modules are built end-to-end as working examples:
+       <b>User</b> (with login) and <b>Item</b> (the copy-me master template).</p>
+    <p>The remaining modules &mdash; Purchase, Requisition, Approval, Stock Movement,
+       Branch Receipt, Stock balances and Reports &mdash; are specified in detail in
+       the Technical Document and are to be built by following the Item pattern.</p>
+    <p style="margin-top:14px;">
+        <a class="btn" href="/item/">Open Items</a>
+        <a class="btn secondary" href="/user/">Open Users</a>
+    </p>
+</div>
+{% endblock %}

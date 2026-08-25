@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ strTitle|default:"leoInventory" }}</title>
+
+    <!-- jQuery + DataTables (CDN) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+
+    <style>
+        body{font-family:system-ui,Arial,sans-serif;margin:0;color:#1f2933;background:#f1f5f9;}
+        header{background:#0b3d62;color:#fff;padding:10px 18px;font-weight:bold;}
+        header nav{display:inline-block;margin-left:20px;font-weight:normal;}
+        header nav a{color:#cfe3f2;text-decoration:none;margin-right:16px;}
+        header nav a:hover{color:#fff;}
+        header .user{float:right;font-size:12px;color:#cfe3f2;font-weight:normal;}
+        header .user a{color:#fff;}
+        .wrap{padding:18px;}
+        .card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:18px;margin-bottom:16px;}
+        h2{margin:0 0 12px;color:#0b3d62;font-size:18px;}
+        label{display:block;font-size:12px;color:#475569;margin:8px 0 3px;}
+        input,select{padding:8px;border:1px solid #cbd5e1;border-radius:6px;width:100%;box-sizing:border-box;}
+        .row{display:flex;gap:12px;flex-wrap:wrap;}
+        .col{flex:1;min-width:160px;}
+        .btn{background:#0b6cf5;color:#fff;border:0;border-radius:6px;padding:9px 16px;cursor:pointer;}
+        .btn.secondary{background:#64748b;}
+        .btn.danger{background:#dc2626;}
+        table.dataTable{width:100%!important;}
+        .msg{padding:8px 12px;border-radius:6px;margin-bottom:10px;font-size:13px;display:none;}
+        .msg.ok{background:#dcfce7;color:#166534;}
+        .msg.err{background:#fee2e2;color:#991b1b;}
+        .act{color:#0b6cf5;cursor:pointer;margin-right:10px;}
+        .act.del{color:#dc2626;}
+    </style>
+</head>
+<body>
+    <header>
+        leoInventory
+        <nav>
+            <a href="/item/">Items</a>
+            <a href="/user/">Users</a>
+        </nav>
+        {% if dctSessionUser.blnLoggedIn %}
+        <span class="user">{{ dctSessionUser.vhr_user_name }} &nbsp;|&nbsp;
+            <a href="/user/logout/">Logout</a></span>
+        {% endif %}
+    </header>
+
+    <div class="wrap">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script>
+        // CSRF helper for all AJAX POSTs
+        function getCookie(name){
+            let v=null;
+            document.cookie.split(';').forEach(function(c){
+                c=c.trim();
+                if(c.startsWith(name+'=')) v=decodeURIComponent(c.substring(name.length+1));
+            });
+            return v;
+        }
+        $.ajaxSetup({
+            headers:{'X-Requested-With':'XMLHttpRequest'},
+            beforeSend:function(xhr,settings){
+                if(!/^(GET|HEAD|OPTIONS|TRACE)$/.test(settings.type)){
+                    xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+                }
+            }
+        });
+        // if a session expires mid-use, AJAX returns 401 -> bounce to login
+        $(document).ajaxError(function(e,xhr){
+            if(xhr.status===401){ window.location='/user/login/'; }
+        });
+    </script>
+    {% block script %}{% endblock %}
+</body>
+</html>

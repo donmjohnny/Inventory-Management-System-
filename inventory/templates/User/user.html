@@ -1,0 +1,38 @@
+{% extends "Common/base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Users</h2>
+    <div id="msg" class="msg"></div>
+    <div class="row">
+        <div class="col"><label>User Name</label><input id="txtName"></div>
+        <div class="col"><label>Display Name</label><input id="txtDisplay"></div>
+        <div class="col">
+            <label>Role</label>
+            <select id="selType">
+                <option value="1">Admin</option>
+                <option value="2">Stock Manager</option>
+                <option value="3" selected>Branch User</option>
+            </select>
+        </div>
+        <div class="col"><label>Password <span style="color:#94a3b8;">(blank = keep)</span></label>
+            <input id="txtPassword" type="password" autocomplete="new-password"></div>
+    </div>
+    <div style="margin-top:14px;">
+        <input type="hidden" id="hidId" value="0">
+        <button class="btn" id="btnSave">Save</button>
+        <button class="btn secondary" id="btnNew">New</button>
+    </div>
+</div>
+
+<div class="card">
+    <table id="tbl" class="display" style="width:100%">
+        <thead><tr>
+            <th>ID</th><th>User Name</th><th>Display Name</th><th>Role</th><th>Action</th>
+        </tr></thead>
+    </table>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src="/static/User/user.js"></script>
+{% endblock %}

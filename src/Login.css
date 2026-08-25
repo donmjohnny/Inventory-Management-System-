@@ -1,0 +1,724 @@
+/* Login Screen Styles */
+
+.login-screen {
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--bg-page);
+  color: var(--text-main);
+  display: flex;
+  transition: background 0.3s, color 0.3s;
+}
+
+.login-layout {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Brand Panel (Left) */
+.login-brand-panel {
+  flex: 1.2;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed, #a855f7);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+.dark .login-brand-panel {
+  background: linear-gradient(135deg, #1e1b4b, #2e1065, #581c87);
+}
+
+/* Decorative background shapes */
+.login-brand-panel::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.login-brand-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(168,85,247,0.3) 0%, transparent 60%);
+  border-radius: 50%;
+}
+
+.brand-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1;
+}
+
+.brand-logo-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  animation: logoPulse 4s infinite ease-in-out;
+}
+
+.brand-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* SVG Illustration Container */
+.brand-illustration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  z-index: 1;
+  padding: 40px 0;
+}
+
+.brand-graphic {
+  width: 80%;
+  max-width: 320px;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.2));
+  animation: floatIllustration 6s ease-in-out infinite;
+}
+
+.brand-footer {
+  z-index: 1;
+}
+
+.brand-tagline {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.brand-desc {
+  font-size: 13px;
+  opacity: 0.8;
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+@keyframes floatIllustration {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Form Panel (Right) */
+.login-form-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  background: var(--bg-white);
+  position: relative;
+  transition: background 0.3s;
+}
+
+/* Theme Toggle Button on Login Page */
+.login-theme-toggle {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+}
+
+
+
+/* Glassmorphism Form Card */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  animation: loginFadeIn 0.5s ease-out;
+}
+
+.login-card-header {
+  margin-bottom: 32px;
+}
+
+.login-card-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.login-card-subtitle {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Forms */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.login-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login-field-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-main);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.login-input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-soft);
+  font-size: 16px;
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.login-input {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-page);
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 13px;
+  transition: all 0.2s ease-out;
+}
+
+.login-input:focus {
+  outline: none;
+  border-color: var(--purple-mid);
+  background: var(--bg-white);
+  box-shadow: 0 0 0 4px rgba(124, 58, 237, 0.12);
+}
+
+.login-input:focus + .login-input-icon {
+  color: var(--purple-mid);
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.password-toggle-btn:hover {
+  color: var(--text-main);
+}
+
+/* Forgot Password & Remember Me */
+.login-options-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.remember-me-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.remember-me-checkbox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 1.5px solid var(--border);
+  accent-color: var(--purple-mid);
+  cursor: pointer;
+}
+
+.forgot-password-link {
+  color: var(--purple-mid);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.forgot-password-link:hover {
+  color: var(--purple-dark);
+  text-decoration: underline;
+}
+
+/* Submit Button */
+.btn-login-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--purple-mid);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+  font-family: inherit;
+}
+
+.btn-login-submit:hover {
+  background: var(--purple-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.35);
+}
+
+.btn-login-submit:active {
+  transform: translateY(0);
+}
+
+.btn-login-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Validation Errors */
+.login-error-alert {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: var(--red);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.shake-animation {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* End of Login Form Panel */
+
+/* Success View for Reset */
+.reset-success-card {
+  text-align: center;
+  padding: 20px 0;
+  animation: loginFadeIn 0.3s ease-out;
+}
+
+.reset-success-icon {
+  font-size: 48px;
+  color: var(--green);
+  margin-bottom: 16px;
+  display: inline-block;
+  animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reset-success-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.reset-success-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* KEYFRAMES */
+@keyframes loginFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.95; }
+}
+
+
+
+@keyframes scaleIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .login-brand-panel {
+    display: none;
+  }
+  .login-form-panel {
+    padding: 40px 24px;
+  }
+}
+
+/* Mock Gmail Notification and Modal Styles */
+.gmail-push-notification {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  width: 320px;
+  background: var(--bg-surface, #ffffff);
+  border-left: 4px solid #ea4335; /* Gmail red */
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  z-index: 1000;
+  cursor: pointer;
+  animation: notificationSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.gmail-push-notification:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gmail-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(234, 67, 53, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #ea4335;
+  flex-shrink: 0;
+}
+
+.gmail-notif-body {
+  flex: 1;
+}
+
+.gmail-notif-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 2px;
+}
+
+.gmail-notif-text {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.gmail-notif-close {
+  background: none;
+  border: none;
+  color: var(--text-soft);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gmail-notif-close:hover {
+  color: var(--text-main);
+}
+
+/* Gmail Email Window Modal */
+.gmail-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+  animation: fadeInOverlay 0.2s ease-out;
+}
+
+.gmail-modal-card {
+  width: 90%;
+  max-width: 480px;
+  background: var(--bg-surface, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  animation: scaleInCard 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gmail-modal-header {
+  background: #ea4335; /* Gmail header red */
+  color: #ffffff;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gmail-modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.gmail-modal-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color 0.15s;
+}
+
+.gmail-modal-close-btn:hover {
+  color: #ffffff;
+}
+
+.gmail-email-content {
+  padding: 24px;
+}
+
+.gmail-email-sender-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+}
+
+.gmail-sender-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ea4335;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.gmail-sender-info {
+  flex: 1;
+  margin-left: 12px;
+}
+
+.gmail-sender-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.gmail-sender-email {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.gmail-email-date {
+  font-size: 11px;
+  color: var(--text-soft);
+}
+
+.gmail-email-subject {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.gmail-email-body {
+  font-size: 13px;
+  color: var(--text-main);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.gmail-verification-box {
+  background: var(--bg-page);
+  border: 1px dashed var(--purple-mid);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.gmail-verification-box p {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.gmail-verification-options {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.gmail-number-btn {
+  background: var(--bg-surface, #ffffff);
+  border: 2px solid var(--border);
+  color: var(--text-main);
+  font-size: 18px;
+  font-weight: 700;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.gmail-number-btn:hover {
+  border-color: var(--purple-mid);
+  color: var(--purple-mid);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
+}
+
+.gmail-number-btn:active {
+  transform: scale(0.95);
+}
+
+/* Number badge showing on target screen */
+.verification-code-display {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--purple-mid);
+  background: rgba(124, 58, 237, 0.08);
+  border: 2px solid rgba(124, 58, 237, 0.2);
+  width: 90px;
+  height: 90px;
+  border-radius: 16px;
+  margin: 16px 0;
+  letter-spacing: 0.05em;
+  animation: pulseCode 2s infinite ease-in-out;
+}
+
+@keyframes pulseCode {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.2); }
+  50% { transform: scale(1.04); box-shadow: 0 0 0 8px rgba(124, 58, 237, 0); }
+}
+
+@keyframes notificationSlideIn {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleInCard {
+  from { transform: scale(0.9) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Mobile Gmail Notifications & Modals Adjustments */
+@media (max-width: 600px) {
+  .gmail-push-notification {
+    left: 16px !important;
+    right: 16px !important;
+    width: auto !important;
+    top: 16px !important;
+  }
+}
